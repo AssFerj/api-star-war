@@ -6,7 +6,7 @@ const api = axios.create({
 
 export async function getPeoples() {
   try {
-    const response = await api.get('/people');
+    const response = await api.get('/people/');
 
     return response.data;
   } catch (error) {
