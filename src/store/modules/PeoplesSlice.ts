@@ -12,8 +12,7 @@ export const { selectAll, selectById } = adapter.getSelectors((state: RootState)
 
 export const reqPeople = createAsyncThunk('people/getAllPeople', async () => {
   const response = await getPeoples();
-  //   return response;
-  console.log(response);
+  return response.results;
 });
 
 const peoplesSlice = createSlice({
@@ -22,8 +21,7 @@ const peoplesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(reqPeople.fulfilled, (state, action) => {
-      state.entities.push(action.payload);
-      console.log('teste');
+      console.log(action.payload);
     });
   }
 });

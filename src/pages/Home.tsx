@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 
 import { Typography } from '@mui/material';
-import { useAppDispatch } from '../store/hooks';
-import { reqPeople } from '../store/modules/PeoplesSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { reqPeople, selectAll } from '../store/modules/PeoplesSlice';
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
+  const persons = useAppSelector(selectAll);
 
   useEffect(() => {
-    dispatch(reqPeople);
+    dispatch(reqPeople());
   }, []);
 
   return (
