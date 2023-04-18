@@ -23,6 +23,7 @@ const peoplesSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(reqPeople.fulfilled, (state, action) => {
       state.entities.push(action.payload);
+      console.log('teste');
     });
   }
 });
