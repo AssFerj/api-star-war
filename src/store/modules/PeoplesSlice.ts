@@ -10,8 +10,8 @@ const adapter = createEntityAdapter<PeopleType>({
 
 export const { selectAll, selectById } = adapter.getSelectors((state: RootState) => state.people);
 
-export const reqPeople = createAsyncThunk('people/getAllPeople', async () => {
-  const response = await getPeoples();
+export const reqPeople = createAsyncThunk('people/getAllPeople', async (page: number) => {
+  const response = await getPeoples(page);
   return response.results;
 });
 
@@ -21,7 +21,7 @@ const peoplesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(reqPeople.fulfilled, (state, action) => {
-      console.log(action.payload);
+      adapter.setAll(state, action.payload);
     });
   }
 });
