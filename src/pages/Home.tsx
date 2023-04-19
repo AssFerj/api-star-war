@@ -64,11 +64,11 @@ const Home: React.FC = () => {
         </Grid>
       </Grid>
       <Box mt={3} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button variant="outlined" onClick={() => setCount(count - 1)}>
+        <Button variant="contained" onClick={() => setCount(count - 1)}>
           Preview
         </Button>
         <Typography>{count}</Typography>
-        <Button variant="outlined" onClick={() => setCount(count + 1)}>
+        <Button variant="contained" onClick={() => setCount(count + 1)}>
           Next
         </Button>
       </Box>
