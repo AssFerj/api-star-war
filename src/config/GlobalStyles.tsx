@@ -13,7 +13,7 @@ const GStyles: React.FC = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignContent: 'center',
-          backgroundImage: 'url("/assets/images/space.jpeg")',
+          //   backgroundImage: 'url("/assets/images/space.jpeg")',
           backgroundAttachment: 'fixed',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',

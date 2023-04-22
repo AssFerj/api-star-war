@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
-import { Box, Button, Grid, Paper, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { reqPeople, selectAll } from '../store/modules/PeoplesSlice';
 import { Link } from 'react-router-dom';
+import PeopleType from '../types/PeopleType';
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const persons = useAppSelector(selectAll);
   const [count, setCount] = useState<number>(1);
+  const [busca, setBusca] = useState<string>('');
+  const [filterName, setFilterName] = useState<PeopleType[]>([]);
+
+  useEffect(() => {
+    const filter = persons.filter(item => item.name);
+    setFilterName(filter);
+    console.log(filterName);
+  }, [busca]);
 
   useEffect(() => {
     if (count <= 0) {
@@ -21,9 +30,23 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Typography variant="h3" sx={{ color: '#fffb25' }}>
-        API Star Wars - Personagens
-      </Typography>
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography variant="h3" sx={{ color: '#fffb25' }}>
+            API Star Wars - Personagens
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            value={busca}
+            onChange={e => setBusca(e.target.value)}
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+          />
+          {/* <SelectComponent /> */}
+        </Grid>
+      </Grid>
 
       <Grid mt={3}>
         <Grid item spacing={2} sx={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-evenly' }}>
