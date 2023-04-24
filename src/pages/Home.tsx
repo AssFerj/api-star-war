@@ -13,10 +13,10 @@ const Home: React.FC = () => {
   const [busca, setBusca] = useState<string>('');
   const [filterName, setFilterName] = useState<PeopleType[]>([]);
 
+  //FUNÇAO PARA FILTRAR OS PERSONAGENS QUE FORAM DIGITADOS NO INPUT DE BUSCA
   useEffect(() => {
-    const filter = persons.filter(item => item.name);
+    const filter = persons.filter(item => item.name.includes(busca));
     setFilterName(filter);
-    console.log(filterName);
   }, [busca]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 
       <Grid mt={3}>
         <Grid item spacing={2} sx={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-evenly' }}>
-          {persons.map((item, index) => {
+          {filterName.map((item, index) => {
             return (
               <React.Fragment key={index}>
                 <Link to={''}>
